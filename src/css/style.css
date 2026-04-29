@@ -1,4 +1,4 @@
-/* Reset Básico */
+/* Reset padrão para garantir que o site seja igual em todos os navegadores */
 * {
     margin: 0;
     padding: 0;
@@ -6,116 +6,99 @@
 }
 
 body {
-    background-color: #050505;
+    background-color: #050505; /* Preto quase puro */
     color: #ffffff;
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Header & Nav */
+/* Header & Menu Centralizado */
 header {
-    padding: 2rem;
+    padding: 1.5rem 0;
     position: fixed;
     width: 100%;
     z-index: 100;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.85); /* Efeito levemente transparente */
+    backdrop-filter: blur(12px); /* Efeito de vidro fosco */
+    border-bottom: 1px solid #1a1a1a;
 }
 
-nav {
+.nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 60px; /* Espaço entre os links e a logo */
 }
 
-.logo {
-    font-weight: 900;
-    font-size: 1.8rem;
-    letter-spacing: -1px;
-}
-
-nav ul {
+.nav-links {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 40px;
 }
 
-nav a {
-    color: #fff;
+.nav-links a {
+    color: #ffffff;
     text-decoration: none;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    transition: opacity 0.3s;
 }
 
-/* Hero Section */
+.nav-links a:hover {
+    opacity: 0.5;
+}
+
+.logo img {
+    height: 45px; /* Ajuste conforme o formato da sua logo */
+    width: auto;
+    display: block;
+}
+
+/* Seção Hero (Primeira imagem que o usuário vê) */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?q=80&w=2070&auto=format&fit=crop'); /* Placeholder de DJ */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../assets/images/hero-bg.webp'); /* Coloque uma foto de festa aqui depois */
     background-size: cover;
     background-position: center;
 }
 
-.hero h1 {
-    font-size: 4rem;
+.hero-content {
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 10vw, 8rem); /* Fonte que se ajusta ao tamanho da tela */
     font-weight: 900;
-    margin-bottom: 1rem;
     letter-spacing: -2px;
 }
 
-.cta-main {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 1rem 2.5rem;
-    background-color: #fff;
-    color: #000;
-    text-decoration: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    transition: 0.3s;
+.hero-content p {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    color: #888;
+    margin-top: 10px;
 }
 
-.cta-main:hover {
-    background-color: #ccc;
-}
-
-/* Seção de Serviços/Empresas */
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
-    background-color: #333; /* Cor da linha divisória */
-}
-
-.service-card {
-    background-color: #050505;
-    padding: 5rem 2rem;
-    text-align: center;
-    transition: 0.5s;
-}
-
-.service-card:hover {
-    background-color: #111;
-}
-
-.service-card h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Responsividade Mobile */
+/* Responsividade Básica para Mobile */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+    .nav-container {
+        gap: 20px;
     }
-    nav ul {
-        display: none; /* Em um mockup real, você faria um menu hambúrguer */
+    .nav-links {
+        gap: 15px;
+    }
+    .nav-links a {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+    .logo img {
+        height: 30px;
     }
 }
