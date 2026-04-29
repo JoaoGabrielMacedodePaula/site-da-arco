@@ -10,24 +10,25 @@
 <body>
 
     <header>
-        <nav>
-            <div class="nav-container">
-                <ul class="nav-links">
-                    <li><a href="#ent">ENT</a></li>
-                    <li><a href="#corp">CORP</a></li>
-                </ul>
-
-                <div class="logo">
-                    <a href="/">
-                        <img src="src/assets/icons/Logo Central (Preto-Branco).png" alt="Arco Logo"> 
-                    </a>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a href="#dart">DART</a></li>
-                    <li><a href="#contato">CONTATO</a></li>
-                </ul>
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="src/assets/icons/logo-arco.svg" alt="Arco Logo"> 
+                </a>
             </div>
+
+            <button class="mobile-menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#ent">ENT</a></li>
+                <li><a href="#corp">CORP</a></li>
+                <li><a href="#dart">DART</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -40,9 +41,14 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Arco Entertainment.</p>
-    </footer>
+    <script>
+        const btn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('.nav-links');
 
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            btn.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
