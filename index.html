@@ -44,7 +44,6 @@
         <!-- Rolo de Fotos (Carrossel) -->
         <section class="photo-roller">
             <div class="roller-container">
-                <!-- Ajuste os nomes das fotos conforme os arquivos na sua pasta images -->
                 <img src="src/assets/images/foto_carrossel_01.jpg" alt="Evento 1">
                 <img src="src/assets/images/foto_carrossel_02.jpg" alt="Evento 2">
                 <img src="src/assets/images/foto_carrossel_03.jpg" alt="Evento 3">
@@ -53,16 +52,16 @@
             </div>
         </section>
 
-        <!-- Seções das Abas -->
-        <section id="ent" class="content-section">
+        <!-- Seções das Abas com Cores Temáticas -->
+        <section id="ent" class="content-section section-ent">
             <h2>ENT</h2>
         </section>
 
-        <section id="corp" class="content-section">
+        <section id="corp" class="content-section section-corp">
             <h2>CORP</h2>
         </section>
 
-        <section id="dart" class="content-section">
+        <section id="dart" class="content-section section-dart">
             <h2>DART</h2>
         </section>
 
@@ -72,7 +71,6 @@
     </main>
 
     <script>
-        // Menu Mobile
         const btn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('.nav-links');
 
@@ -81,7 +79,6 @@
             btn.classList.toggle('active');
         });
 
-        // Fechar menu ao clicar em um link (Mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
