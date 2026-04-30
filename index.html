@@ -33,7 +33,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1>ARCO</h1>
@@ -41,28 +40,41 @@
             </div>
         </section>
 
-        <!-- Rolo de Fotos (Carrossel) -->
-        <section class="photo-roller">
-            <div class="roller-container">
-                <img src="src/assets/images/foto_carrossel_01.jpg" alt="Evento 1">
-                <img src="src/assets/images/foto_carrossel_02.jpg" alt="Evento 2">
-                <img src="src/assets/images/foto_carrossel_03.jpg" alt="Evento 3">
-                <img src="src/assets/images/foto_carrossel_04.jpg" alt="Evento 4">
-                <img src="src/assets/images/foto_carrossel_05.jpg" alt="Evento 5">
+        <!-- Rolo de Fotos com Navegação -->
+        <section class="photo-roller-section">
+            <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+            <div class="photo-roller" id="roller">
+                <div class="roller-container">
+                    <img src="src/assets/images/foto_carrossel_01.jpg" class="expandable" alt="Evento 1">
+                    <img src="src/assets/images/foto_carrossel_02.jpg" class="expandable" alt="Evento 2">
+                    <img src="src/assets/images/foto_carrossel_03.jpg" class="expandable" alt="Evento 3">
+                    <img src="src/assets/images/foto_carrossel_04.jpg" class="expandable" alt="Evento 4">
+                    <img src="src/assets/images/foto_carrossel_05.jpg" class="expandable" alt="Evento 5">
+                </div>
+            </div>
+            <button class="nav-btn next" id="nextBtn">&#10095;</button>
+        </section>
+
+        <!-- Seções das Abas -->
+        <section id="ent" class="content-section section-ent">
+            <div class="content-wrapper">
+                <img src="src/assets/icons/logo_aba_ent.png" class="brand-logo" alt="Logo ENT">
+                <p>Na Arco Entertainment, somos loucos pelo seu sucesso, nosso sonho é realizar o seu. Por aqui, você pode conferir os eventos de bilheteria que fazemos, agendar um DJ para seu Baile de debutante, formatura e evento privado ou, até mesmo, planejar o seu evento corporativo para atingir e encantar o seu cliente! Somos Fora da Curva!</p>
             </div>
         </section>
 
-        <!-- Seções das Abas com Cores Temáticas -->
-        <section id="ent" class="content-section section-ent">
-            <h2>ENT</h2>
-        </section>
-
         <section id="corp" class="content-section section-corp">
-            <h2>CORP</h2>
+            <div class="content-wrapper">
+                <img src="src/assets/icons/logo_aba_corp.png" class="brand-logo" alt="Logo CORP">
+                <p>Somos um braço da Arco Entertainment, criado com o propósito de apoiar pequenas e médias empresas na missão de encantar clientes e colaboradores, promovendo conexões autênticas e duradouras. Atuamos com foco no fortalecimento de relacionamentos, por meio de experiências marcadas pelo cuidado, pela personalização e pela atenção aos detalhes que realmente importam. Nosso mantra é atingir as pessoas certas na hora certa. Nosso sonho é realizar o seu.</p>
+            </div>
         </section>
 
         <section id="dart" class="content-section section-dart">
-            <h2>DART</h2>
+            <div class="content-wrapper">
+                <img src="src/assets/icons/logo_aba_dart.png" class="brand-logo" alt="Logo DART">
+                <p>Criada a partir da parceria entre a Arco Entertainment e a Dhauz Music Business, a DART une experiência, visão de mercado e propósito para construir algo maior: carreiras sólidas e duradouras.</p>
+            </div>
         </section>
 
         <section id="contato" class="content-section">
@@ -70,21 +82,47 @@
         </section>
     </main>
 
+    <!-- Modal para abrir a foto -->
+    <div id="photoModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
+
     <script>
+        // Menu Mobile
         const btn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('.nav-links');
-
         btn.addEventListener('click', () => {
             nav.classList.toggle('active');
             btn.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                btn.classList.remove('active');
+        // Carrossel - Navegação
+        const roller = document.getElementById('roller');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        nextBtn.addEventListener('click', () => {
+            roller.scrollBy({ left: 400, behavior: 'smooth' });
+        });
+        prevBtn.addEventListener('click', () => {
+            roller.scrollBy({ left: -400, behavior: 'smooth' });
+        });
+
+        // Modal - Abrir Foto
+        const modal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('imgFull');
+        const closeBtn = document.querySelector('.close-modal');
+
+        document.querySelectorAll('.expandable').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = "flex";
+                modalImg.src = img.src;
             });
         });
+
+        closeBtn.onclick = () => modal.style.display = "none";
+        modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
     </script>
 </body>
 </html>
