@@ -1,12 +1,13 @@
-/* Reset Básico */
+/* Reset e Base True Black */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth; /* Para o deslocamento suave ao clicar nas abas */
 }
 
 body {
-    background-color: #050505;
+    background-color: #000000; /* True Black */
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
@@ -17,29 +18,26 @@ header {
     position: fixed;
     width: 100%;
     z-index: 100;
-    background: rgba(5, 5, 5, 0.9);
-    backdrop-filter: blur(10px);
+    background-color: #000000;
     border-bottom: 1px solid #1a1a1a;
 }
 
 .nav-container {
     display: flex;
-    justify-content: center; /* Centraliza a logo no container */
+    justify-content: center;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    position: relative; /* Permite o posicionamento absoluto das abas */
-    min-height: 110px; /* Garante espaço para a logo de 100px + respiro */
+    position: relative;
+    min-height: 110px;
 }
 
-/* Logo: 100px e Centralizada */
 .logo img {
     height: 100px;
     width: auto;
     display: block;
 }
 
-/* Abas à Direita no Desktop */
 @media (min-width: 769px) {
     .nav-links {
         position: absolute;
@@ -58,10 +56,8 @@ header {
     letter-spacing: 2px;
     position: relative;
     padding-bottom: 8px;
-    transition: color 0.3s;
 }
 
-/* Efeito de Sublinhado no Hover */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -77,14 +73,82 @@ header {
     width: 100%;
 }
 
-/* Menu Mobile (Barrinhas) */
+/* Hero Section */
+.hero {
+    height: 60vh; /* Reduzido para dar foco ao rolo de fotos abaixo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 110px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: #888;
+}
+
+/* Rolo de Fotos (Carrossel Horizontal) */
+.photo-roller {
+    width: 100%;
+    overflow-x: auto;
+    padding: 2rem 0;
+    background-color: #000000;
+}
+
+/* Esconder barra de scroll */
+.photo-roller::-webkit-scrollbar {
+    display: none;
+}
+
+.roller-container {
+    display: flex;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.roller-container img {
+    height: 400px; /* Altura fixa para manter o padrão */
+    width: 30%; /* Exibe aproximadamente 3 fotos */
+    min-width: 300px;
+    object-fit: cover;
+    filter: grayscale(100%); /* Mantém a estética P&B do Instagram */
+    transition: 0.5s;
+}
+
+.roller-container img:hover {
+    filter: grayscale(0%); /* Volta a cor no hover */
+}
+
+/* Seções Horizontais */
+.content-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.content-section h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    opacity: 0.1; /* Estética de fundo para as sessões */
+}
+
+/* Mobile */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
     gap: 6px;
     background: none;
     border: none;
-    cursor: pointer;
     position: absolute;
     right: 0;
 }
@@ -93,15 +157,10 @@ header {
     width: 30px;
     height: 2px;
     background-color: #fff;
-    transition: 0.3s;
 }
 
-/* Estilos Mobile */
 @media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: flex;
-    }
-
+    .mobile-menu-btn { display: flex; }
     .nav-links {
         display: none;
         flex-direction: column;
@@ -109,41 +168,12 @@ header {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #050505;
+        background-color: #000000;
         padding: 2rem;
-        text-align: center;
-        border-bottom: 1px solid #1a1a1a;
         gap: 25px;
     }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .logo img {
-        height: 60px; /* Logo um pouco menor no mobile para não ocupar a tela toda */
-    }
-}
-
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: clamp(3rem, 12vw, 10rem);
-    font-weight: 900;
-    letter-spacing: -2px;
-}
-
-.hero p {
-    font-size: 0.9rem;
-    letter-spacing: 5px;
-    color: #888;
-    margin-top: 10px;
+    .nav-links.active { display: flex; }
+    .logo img { height: 60px; }
+    .hero { height: 40vh; }
+    .roller-container img { width: 80%; } /* No mobile mostra quase uma foto inteira */
 }
