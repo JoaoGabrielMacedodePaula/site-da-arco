@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arco Entertainment | Agenciamento & Eventos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Ícones para Redes Sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
 
     <header>
         <nav class="nav-container">
+            <!-- Ícones de Redes Sociais à Esquerda -->
+            <div class="social-icons">
+                <a href="https://wa.me/5531985111865" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/arco_ent" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@arco_ent" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+
+            <!-- Logo Centralizada -->
             <div class="logo">
-                <a href="/">
+                <a href="#">
                     <img src="src/assets/icons/logo_principal.png" alt="Arco Logo"> 
                 </a>
             </div>
@@ -23,7 +33,9 @@
                 <span></span>
             </button>
 
+            <!-- Menu com HOME e Abas -->
             <ul class="nav-links">
+                <li><a href="#">HOME</a></li>
                 <li><a href="#ent">ENT</a></li>
                 <li><a href="#corp">CORP</a></li>
                 <li><a href="#dart">DART</a></li>
@@ -33,14 +45,13 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="hero-content">
                 <h1>ARCO</h1>
                 <p>CRIANDO MOMENTOS, AGENCIANDO TALENTOS.</p>
             </div>
         </section>
 
-        <!-- Rolo de Fotos com Navegação -->
         <section class="photo-roller-section">
             <button class="nav-btn prev" id="prevBtn">&#10094;</button>
             <div class="photo-roller" id="roller">
@@ -55,7 +66,6 @@
             <button class="nav-btn next" id="nextBtn">&#10095;</button>
         </section>
 
-        <!-- Seções das Abas -->
         <section id="ent" class="content-section section-ent">
             <div class="content-wrapper">
                 <img src="src/assets/icons/logo_aba_ent.png" class="brand-logo" alt="Logo ENT">
@@ -77,19 +87,27 @@
             </div>
         </section>
 
-        <section id="contato" class="content-section">
-            <h2>CONTATO</h2>
+        <section id="contato" class="content-section section-contato">
+            <div class="content-wrapper">
+                <h2>CONTATO</h2>
+                <div class="contact-info">
+                    <p><i class="fa-solid fa-phone"></i> (31) 98511 1865</p>
+                    <p><i class="fa-solid fa-envelope"></i> contato@arcoent.com.br</p>
+                </div>
+                <div class="contact-socials">
+                    <a href="https://wa.me/5531985111865" target="_blank">WhatsApp</a>
+                    <a href="https://instagram.com/arco_ent" target="_blank">Instagram</a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Modal para abrir a foto -->
     <div id="photoModal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="imgFull">
     </div>
 
     <script>
-        // Menu Mobile
         const btn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('.nav-links');
         btn.addEventListener('click', () => {
@@ -97,19 +115,13 @@
             btn.classList.toggle('active');
         });
 
-        // Carrossel - Navegação
         const roller = document.getElementById('roller');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
 
-        nextBtn.addEventListener('click', () => {
-            roller.scrollBy({ left: 400, behavior: 'smooth' });
-        });
-        prevBtn.addEventListener('click', () => {
-            roller.scrollBy({ left: -400, behavior: 'smooth' });
-        });
+        nextBtn.addEventListener('click', () => roller.scrollBy({ left: 400, behavior: 'smooth' }));
+        prevBtn.addEventListener('click', () => roller.scrollBy({ left: -400, behavior: 'smooth' }));
 
-        // Modal - Abrir Foto
         const modal = document.getElementById('photoModal');
         const modalImg = document.getElementById('imgFull');
         const closeBtn = document.querySelector('.close-modal');
